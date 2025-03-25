@@ -82,7 +82,7 @@ export default function Hero() {
     <section className="relative pt-20">
       <div className="container mx-auto px-4 py-12">
         {/* Main Carousel Container */}
-        <div className="relative bg-white rounded-lg shadow-xl">
+        <div className="relative bg-white rounded-lg shadow-xl overflow-hidden">
           {/* Viewport Container - Handles overflow */}
           <div className="overflow-hidden">
             {/* Slides Container - Handles transitions */}
@@ -101,15 +101,27 @@ export default function Hero() {
                   {/* Article Grid Layout */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
                     {/* Image Container with Next.js Image optimization */}
-                    <div className="relative h-[400px] bg-gray-100 rounded-lg">
+                    <div className="relative h-[400px] rounded-lg overflow-hidden bg-gradient-to-r from-blue-100 to-blue-200">
                       <Image
                         src={article.image}
                         alt={article.title}
                         fill
                         priority={article.id === 1}
-                        className="object-contain p-4"
+                        className="object-cover"
                         sizes="(max-width: 768px) 100vw, 50vw"
+                        onError={(e) => {
+                          // Prevent infinite error loop
+                          e.currentTarget.onerror = null;
+                          // Set a default gradient background
+                          e.currentTarget.style.display = 'none';
+                        }}
                       />
+                      {/* Fallback content */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="text-2xl font-bold text-gray-600">
+                          {article.title.split(' ').slice(0, 2).join(' ')}
+                        </div>
+                      </div>
                     </div>
                     
                     {/* Article Content Container */}

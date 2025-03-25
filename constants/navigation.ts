@@ -1,3 +1,11 @@
+/**
+ * Navigation Constants
+ * 
+ * Defines navigation links and social media links.
+ * Social icons should be SVG format (24x24px) and placed in the social directory.
+ * @see DEPLOYMENT.md for icon guidelines
+ */
+
 import { FooterSection, SocialLink } from '../types';
 
 export const footerSections: FooterSection[] = [
@@ -33,17 +41,17 @@ export const footerSections: FooterSection[] = [
 export const socialLinks: SocialLink[] = [
   {
     platform: "LinkedIn",
-    href: "https://linkedin.com/company/supplyhub",
-    icon: "/icons/linkedin.svg"
+    icon: "/icons/social/linkedin.svg",
+    href: "https://linkedin.com/company/supplyhub"
   },
   {
     platform: "Twitter",
-    href: "https://twitter.com/supplyhub",
-    icon: "/icons/twitter.svg"
+    icon: "/icons/social/twitter.svg",
+    href: "https://twitter.com/supplyhub"
   },
   {
     platform: "GitHub",
-    href: "https://github.com/supplyhub",
-    icon: "/icons/github.svg"
+    icon: "/icons/social/github.svg",
+    href: "https://github.com/hlaredo/supplyhub"
   }
 ]; 

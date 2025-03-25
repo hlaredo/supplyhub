@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M38 10v28H10V10h28m0-4H10c-2.2 0-4 1.8-4 4v28c0 2.2 1.8 4 4 4h28c2.2 0 4-1.8 4-4V10c0-2.2-1.8-4-4-4z" fill="currentColor"/>
+  <path d="M28 34H14v-4h14v4zm6-8H14v-4h20v4zm0-8H14v-4h20v4z" fill="currentColor"/>
+  <path d="M28 34H14v-4h14v4zm6-8H14v-4h20v4zm0-8H14v-4h20v4z" fill="currentColor" opacity="0.6"/>
+</svg> 

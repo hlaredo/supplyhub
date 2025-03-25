@@ -44,12 +44,13 @@ export default function Features() {
               className="relative group bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-8"
             >
               {/* Feature Icon */}
-              <div className="relative w-16 h-16 mx-auto mb-6">
+              <div className={`relative w-24 h-24 mx-auto mb-8 rounded-full bg-${feature.color}-50 p-4 flex items-center justify-center group-hover:bg-${feature.color}-100 transition-colors`}>
                 <Image
                   src={feature.icon}
                   alt={feature.title}
-                  fill
-                  className="object-contain"
+                  width={48}
+                  height={48}
+                  className={`object-contain text-${feature.color}-600 group-hover:scale-110 transition-transform duration-300`}
                 />
               </div>
 
@@ -59,32 +60,9 @@ export default function Features() {
               </h3>
 
               {/* Feature Description */}
-              <p className="text-gray-600 text-center mb-6">
+              <p className="text-gray-600 text-center mb-8">
                 {feature.description}
               </p>
-
-              {/* Feature Items List */}
-              <ul className="space-y-3 mb-8">
-                {feature.items.map((item) => (
-                  <li key={item} className="flex items-center text-gray-700">
-                    {/* Checkmark Icon */}
-                    <svg
-                      className={`w-5 h-5 mr-3 text-${feature.color}-500`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
 
               {/* Call-to-action Button */}
               <Link

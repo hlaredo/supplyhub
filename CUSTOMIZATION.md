@@ -2,7 +2,7 @@
 
 ## Table of Contents
 1. [Component Structure](#component-structure)
-2. [Quick Customizations](#quick-customizations)
+2. [Asset Management](#asset-management)
 3. [Theme Configuration](#theme-configuration)
 4. [Layout System](#layout-system)
 5. [Best Practices](#best-practices)
@@ -20,66 +20,77 @@ components/
     └── Footer.tsx       # Site footer
 ```
 
-## Quick Customizations
+## Asset Management
 
-### 1. Article Carousel (Hero.tsx)
-
-```typescript
-// 1. Update article content in constants/articles.ts
-export const articles: Article[] = [
-  {
-    id: 1,
-    title: "Your Title",
-    image: "/images/article1.jpg",
-    summary: "Your summary"
-  }
-];
-
-// 2. Carousel timing in Hero.tsx
-useEffect(() => {
-  const timer = setInterval(() => {
-    setCurrentArticle((prev) => (prev + 1) % articles.length);
-  }, 5000); // 5 seconds
-  return () => clearInterval(timer);
-}, []);
+### Directory Structure
+```
+public/
+├── images/              # Application images
+│   ├── articles/       # Article-related images (800x400px)
+│   └── backgrounds/    # Background images
+├── icons/              # Application icons (24x24px SVG)
+│   ├── features/       # Feature-specific icons
+│   └── social/        # Social media icons
+└── logo.svg           # Main application logo
 ```
 
-### 2. Feature Cards (Features.tsx)
+### Image Guidelines
 
-```typescript
-// Update feature content in constants/features.ts
-export const features: Feature[] = [
-  {
-    title: "YOUR FEATURE",
-    description: "Your description",
-    icon: "/icons/your-icon.svg",
-    items: ["Item 1", "Item 2"],
-    color: "blue" // Options: blue, green, mauve
-  }
-];
-```
+1. Article Images:
+   ```typescript
+   // 1. Image specifications
+   dimensions: "800x400px"
+   format: "JPG/PNG"
+   location: "/public/images/articles/"
+   
+   // 2. Update article configuration
+   const article: Article = {
+     id: 1,
+     title: "Article Title",
+     image: "/images/articles/article1.jpg",
+     summary: "Article summary"
+   };
+   ```
 
-### 3. Footer Configuration
+2. Background Images:
+   ```typescript
+   // Image specifications
+   desktop: "1920x1080px"
+   mobile: "750x1334px"
+   format: "JPG/PNG/WebP"
+   location: "/public/images/backgrounds/"
+   ```
 
-```typescript
-// Update in constants/navigation.ts
-export const footerSections: FooterSection[] = [
-  {
-    title: "Section Name",
-    links: [
-      { label: "Link Text", href: "/path" }
-    ]
-  }
-];
+3. Feature Icons:
+   ```typescript
+   // 1. Icon specifications
+   format: "SVG"
+   size: "24x24px"
+   location: "/public/icons/features/"
+   
+   // 2. Update feature configuration
+   const feature: Feature = {
+     title: "FEATURE NAME",
+     icon: "/icons/features/name.svg",
+     description: "Feature description",
+     color: "primary" // primary | secondary | accent
+   };
+   ```
 
-export const socialLinks: SocialLink[] = [
-  {
-    platform: "Platform Name",
-    href: "https://your-url.com",
-    icon: "/icons/platform.svg"
-  }
-];
-```
+4. Social Icons:
+   ```typescript
+   // 1. Icon specifications
+   format: "SVG"
+   size: "24x24px"
+   location: "/public/icons/social/"
+   
+   // 2. Update social link configuration
+   const socialLink: SocialLink = {
+     platform: "Platform Name",
+     icon: "/icons/social/platform.svg",
+     href: "https://platform.com/supplyhub"
+   };
+   ```
 
 ## Theme Configuration
 
@@ -164,104 +175,103 @@ module.exports = {
 };
 ```
 
-### 2. Grid System
+### 2. Image Component Usage
 
 ```typescript
-// Common grid layouts
-const gridLayouts = {
-  features: "grid grid-cols-1 md:grid-cols-3 gap-12",
-  footer: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12",
-  hero: "grid grid-cols-1 md:grid-cols-2 gap-8"
-};
-```
+// Responsive image with Next.js Image
+<Image
+  src={src}
+  alt={alt}
+  width={800}
+  height={400}
+  priority={isPriority}
+  sizes="(max-width: 768px) 100vw, 50vw"
+  className="object-cover rounded-lg"
+/>
 
-### 3. Spacing System
-
-```typescript
-// Common spacing utilities
-const spacing = {
-  section: "py-20",
-  container: "px-4",
-  stack: "space-y-6",
-  grid: "gap-8"
-};
+// SVG icon with color
+<Image
+  src={icon}
+  alt={title}
+  width={24}
+  height={24}
+  className={`text-${color}-600`}
+/>
 ```
 
 ## Best Practices
 
-### 1. Image Guidelines
-
-- Article images:
-  - Format: JPG/PNG
-  - Dimensions: 800x400px
-  - Location: `/public/images/`
-  - Quality: High resolution, optimized for web
-
-- Icons:
-  - Format: SVG
-  - Dimensions: 24x24px
-  - Location: `/public/icons/`
-  - Style: Consistent stroke width
-
-### 2. Performance Optimization
+### 1. Image Optimization
 
 ```typescript
-// 1. Image optimization
+// 1. Use Next.js Image component
+import Image from 'next/image';
+
+// 2. Enable WebP/AVIF formats
+// next.config.js
+images: {
+  formats: ['image/avif', 'image/webp']
+}
+
+// 3. Implement responsive sizes
+sizes="(max-width: 768px) 100vw, 50vw"
+
+// 4. Use appropriate loading priority
+priority={isHeroImage}
+```
+
+### 2. Icon Management
+
+```typescript
+// 1. Use consistent dimensions
+width={24}
+height={24}
+
+// 2. Support dark mode
+className="dark:invert"
+
+// 3. Implement color themes
+className={`text-${color}-600`}
+```
+
+### 3. Performance Optimization
+
+```typescript
+// 1. Enable image caching
+// next.config.js
+images: {
+  minimumCacheTTL: 60,
+}
+
+// 2. Configure domains for CDN
+images: {
+  domains: ['your-cdn.com']
+}
+
+// 3. Implement responsive loading
 <Image
-  src={src}
-  alt={alt}
-  fill
-  priority={isPriority}
-  sizes="(max-width: 768px) 100vw, 50vw"
+  {...props}
+  sizes="(max-width: 640px) 100vw,
+         (max-width: 1024px) 50vw,
+         33vw"
+/>
+```
+
+### 4. Accessibility
+
+```typescript
+// 1. Provide meaningful alt text
+<Image
+  alt="Detailed description of the image"
 />
 
-// 2. Conditional rendering
-{isVisible && <Component />}
-
-// 3. Event debouncing
-const debouncedHandler = useCallback(
-  debounce((value) => {
-    // Handle event
-  }, 300),
-  []
-);
-```
-
-### 3. Accessibility
-
-```typescript
-// 1. ARIA labels
-<button
-  aria-label="Open menu"
-  aria-expanded={isOpen}
->
-  {/* Button content */}
+// 2. Use ARIA labels for icons
+<button aria-label="Share on Twitter">
+  <Image src="/icons/social/twitter.svg" />
 </button>
 
-// 2. Semantic HTML
-<nav>
-  <ul role="menubar">
-    <li role="menuitem">
-      <a href="/path">Link</a>
-    </li>
-  </ul>
-</nav>
-```
-
-### 4. SEO Best Practices
-
-```typescript
-// pages/_app.tsx
-import Head from 'next/head';
-
-<Head>
-  <title>SupplyHub - Supply Chain Intelligence</title>
-  <meta
-    name="description"
-    content="Supply chain intelligence platform"
-  />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-</Head>
+// 3. Support reduced motion
+className="motion-safe:transition-transform"
 ```
 
 ## Quick Tips
@@ -289,7 +299,7 @@ import Head from 'next/head';
 ## Support
 
 For customization help:
-1. Review component documentation
-2. Check Tailwind documentation
-3. Consult theme configuration
-4. Contact development team
+1. Review [DEPLOYMENT.md](DEPLOYMENT.md) for asset guidelines
+2. Check [TECHNICAL_REFERENCE.md](TECHNICAL_REFERENCE.md) for implementation details
+3. Consult Next.js Image documentation
+4. Contact development team at dev@supplyhub.com

@@ -1,25 +1,30 @@
+/**
+ * Feature Constants
+ * 
+ * Defines the main features displayed in the Features section.
+ * Icons should be SVG format (24x24px) and placed in the features directory.
+ * @see DEPLOYMENT.md for icon guidelines
+ */
+
 import { Feature } from '../types';
 
 export const features: Feature[] = [
   {
     title: "STAY UP TO DATE",
-    description: "News digests and insights related to supply chain and procurement",
-    icon: "/icons/news.svg",
-    items: ["News digests", "Industry insights", "Market trends", "Expert analysis"],
-    color: "blue"
+    icon: "/icons/features/news.svg",
+    description: "Get real-time updates on market trends, pricing, and supply chain disruptions",
+    color: "primary"
   },
   {
-    title: "NETWORK",
-    description: "Find the most innovative companies in the business",
-    icon: "/icons/network.svg",
-    items: ["Diversity lists", "Start-up lists", "Supplier profiles", "Expert connections", "Events"],
-    color: "green"
+    title: "EXPAND YOUR NETWORK",
+    icon: "/icons/features/network.svg",
+    description: "Connect with verified suppliers and buyers from around the globe",
+    color: "secondary"
   },
   {
-    title: "GENERATE VALUE",
-    description: "Develop your business foundations and unleash productivity",
-    icon: "/icons/value.svg",
-    items: ["Automated tools", "Templates", "Cheat sheets", "Process guides"],
-    color: "mauve"
+    title: "MAXIMIZE VALUE",
+    icon: "/icons/features/value.svg",
+    description: "Optimize your supply chain with AI-powered insights and recommendations",
+    color: "accent"
   }
 ]; 

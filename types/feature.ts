@@ -24,22 +24,17 @@
  *                          Must be relative to the public directory
  *                          Should be 24x24px for consistency
  * 
- * @property {string[]} items - List of capabilities or sub-features
- *                             Displayed as bullet points
- *                             Should be concise action items
- * 
- * @property {'blue' | 'green' | 'mauve'} color - Brand color theme for the feature
- *                                                Used for icons and accents
- *                                                Matches the design system
+ * @property {'primary' | 'secondary' | 'accent'} color - Brand color theme for the feature
+ *                                                       Used for icons and accents
+ *                                                       Matches the design system
  * 
  * @example
  * ```typescript
  * const feature: Feature = {
  *   title: "STAY UP TO DATE",
  *   description: "Get the latest supply chain insights",
- *   icon: "/icons/news.svg",
- *   items: ["Daily updates", "Industry analysis"],
- *   color: "blue"
+ *   icon: "/icons/features/news.svg",
+ *   color: "primary"
  * };
  * ```
  */
@@ -47,6 +42,5 @@ export interface Feature {
   title: string;
   description: string;
   icon: string;
-  items: string[];
-  color: 'blue' | 'green' | 'mauve';
+  color: 'primary' | 'secondary' | 'accent';
 } 
