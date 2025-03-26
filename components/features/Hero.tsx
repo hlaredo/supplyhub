@@ -59,6 +59,8 @@ import { articles } from '../../constants';
 export default function Hero() {
   // Track the index of the currently displayed article
   const [currentArticle, setCurrentArticle] = useState(0);
+  // Track loading states for images
+  const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({});
 
   // Auto-rotation effect with cleanup
   useEffect(() => {
@@ -76,6 +78,17 @@ export default function Hero() {
    */
   const handleDotClick = (index: number) => {
     setCurrentArticle(index);
+  };
+
+  /**
+   * Handles image load completion
+   * @param {number} articleId - The ID of the article whose image has loaded
+   */
+  const handleImageLoad = (articleId: number) => {
+    setLoadedImages(prev => ({
+      ...prev,
+      [articleId]: true
+    }));
   };
 
   return (
@@ -101,27 +114,27 @@ export default function Hero() {
                   {/* Article Grid Layout */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
                     {/* Image Container with Next.js Image optimization */}
-                    <div className="relative h-[400px] rounded-lg overflow-hidden bg-gradient-to-r from-blue-100 to-blue-200">
+                    <div className="relative h-[400px] rounded-lg overflow-hidden bg-gray-100">
                       <Image
                         src={article.image}
                         alt={article.title}
                         fill
                         priority={article.id === 1}
-                        className="object-cover"
+                        className={`object-cover transition-opacity duration-500 ${
+                          loadedImages[article.id] ? 'opacity-100' : 'opacity-0'
+                        }`}
                         sizes="(max-width: 768px) 100vw, 50vw"
+                        quality={90}
+                        onLoad={() => handleImageLoad(article.id)}
                         onError={(e) => {
-                          // Prevent infinite error loop
-                          e.currentTarget.onerror = null;
-                          // Set a default gradient background
-                          e.currentTarget.style.display = 'none';
+                          // Handle image load errors gracefully
+                          e.currentTarget.style.opacity = '0';
                         }}
                       />
-                      {/* Fallback content */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-2xl font-bold text-gray-600">
-                          {article.title.split(' ').slice(0, 2).join(' ')}
-                        </div>
-                      </div>
+                      {/* Loading state placeholder */}
+                      {!loadedImages[article.id] && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-200 animate-pulse" />
+                      )}
                     </div>
                     
                     {/* Article Content Container */}

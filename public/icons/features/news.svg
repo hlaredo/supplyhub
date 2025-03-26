@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M38 10v28H10V10h28m0-4H10c-2.2 0-4 1.8-4 4v28c0 2.2 1.8 4 4 4h28c2.2 0 4-1.8 4-4V10c0-2.2-1.8-4-4-4z" fill="currentColor"/>
-  <path d="M28 34H14v-4h14v4zm6-8H14v-4h20v4zm0-8H14v-4h20v4z" fill="currentColor"/>
-  <path d="M28 34H14v-4h14v4zm6-8H14v-4h20v4zm0-8H14v-4h20v4z" fill="currentColor" opacity="0.6"/>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M50.67 13.33v37.34H13.33V13.33h37.34m0-5.33H13.33c-2.93 0-5.33 2.4-5.33 5.33v37.34c0 2.93 2.4 5.33 5.33 5.33h37.34c2.93 0 5.33-2.4 5.33-5.33V13.33c0-2.93-2.4-5.33-5.33-5.33z" fill="currentColor"/>
+  <path d="M37.33 45.33H18.67v-5.33h18.67v5.33zm8-10.67H18.67v-5.33h26.67v5.33zm0-10.67H18.67v-5.33h26.67v5.33z" fill="currentColor"/>
+  <path d="M37.33 45.33H18.67v-5.33h18.67v5.33zm8-10.67H18.67v-5.33h26.67v5.33zm0-10.67H18.67v-5.33h26.67v5.33z" fill="currentColor" opacity="0.6"/>
 </svg> 

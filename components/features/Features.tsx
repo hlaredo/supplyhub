@@ -44,12 +44,12 @@ export default function Features() {
               className="relative group bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-8"
             >
               {/* Feature Icon */}
-              <div className={`relative w-24 h-24 mx-auto mb-8 rounded-full bg-${feature.color}-50 p-4 flex items-center justify-center group-hover:bg-${feature.color}-100 transition-colors`}>
+              <div className={`relative w-32 h-32 mx-auto mb-8 rounded-full bg-${feature.color}-50 p-6 flex items-center justify-center group-hover:bg-${feature.color}-100 transition-colors`}>
                 <Image
                   src={feature.icon}
                   alt={feature.title}
-                  width={48}
-                  height={48}
+                  width={64}
+                  height={64}
                   className={`object-contain text-${feature.color}-600 group-hover:scale-110 transition-transform duration-300`}
                 />
               </div>

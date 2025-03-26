@@ -11,32 +11,32 @@ import { Article } from '../types';
 export const articles: Article[] = [
   {
     id: 1,
-    title: "Revolutionary AI Solutions Transform Supply Chain Management",
-    image: "/images/articles/placeholder-1.svg",
-    summary: "How artificial intelligence is reshaping the future of supply chain operations"
+    title: "AI-Powered Analytics Revolutionizing Supply Chain",
+    image: "/images/articles/ai-analytics.jpg",
+    summary: "Advanced AI analytics dashboards providing real-time insights into supply chain operations and performance metrics"
   },
   {
     id: 2,
-    title: "Sustainable Practices in Modern Supply Chains",
-    image: "/images/articles/placeholder-2.svg",
-    summary: "Discover how leading companies are implementing eco-friendly practices, reducing carbon footprints, and creating sustainable supply chain networks for a greener future"
+    title: "Machine Learning Transforming Supply Chain Intelligence",
+    image: "/images/articles/ai-brain.jpg",
+    summary: "How machine learning and artificial intelligence are creating smarter, more efficient supply chain networks"
   },
   {
     id: 3,
-    title: "Digital Transformation in Procurement",
-    image: "/images/articles/placeholder-3.svg",
-    summary: "Explore the latest digital procurement technologies, from e-sourcing platforms to blockchain integration, revolutionizing how businesses manage their purchasing processes"
+    title: "Digital Procurement Solutions",
+    image: "/images/articles/procurement.jpg",
+    summary: "Modern procurement strategies leveraging digital transformation for better supplier relationships and cost management"
   },
   {
     id: 4,
-    title: "Building Supply Chain Resilience",
-    image: "/images/articles/placeholder-4.svg",
-    summary: "Learn key strategies for creating robust and adaptable supply chains that can withstand global disruptions, from risk management to diversification tactics"
+    title: "Revenue Optimization Through Data",
+    image: "/images/articles/revenue.jpg",
+    summary: "Data-driven approaches to maximize revenue and optimize supply chain financial performance"
   },
   {
     id: 5,
-    title: "Innovation in Supply Chain Technology",
-    image: "/images/articles/placeholder-5.svg",
-    summary: "Emerging technologies reshaping supply chain management"
+    title: "Strategic Procurement Management",
+    image: "/images/articles/procurement-doc.jpg",
+    summary: "Best practices in procurement management for sustainable business growth"
   }
 ]; 
